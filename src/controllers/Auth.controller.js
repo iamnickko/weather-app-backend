@@ -1,3 +1,4 @@
+import { validationResult } from "express-validator";
 import AuthService from "../services/Auth.services.js";
 
 export default class AuthController {
@@ -9,7 +10,9 @@ export default class AuthController {
 
   signUp = async (req, res) => {
     try {
-      const newUser = await this.#service.addNewUser(req.body);
+      const validationErrors = validationResult(req);
+      console.log(validationErrors);
+      const newUser = await this.#service.signUp(req.body);
       return res.status(201).json(newUser);
     } catch (error) {
       console.log(error);

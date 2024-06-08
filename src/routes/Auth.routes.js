@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { body } from "express-validator";
 
 export default class AuthRoutes {
   #router;
@@ -13,7 +14,15 @@ export default class AuthRoutes {
   }
 
   #initialise = () => {
-    this.#router.post("/signup", this.#controller.signUp);
+    this.#router.post(
+      "/signup",
+      [
+        body("name").exists().escape(),
+        body("email").exists().normalizeEmail().escape().isEmail(),
+        body("password").exists().escape(),
+      ],
+      this.#controller.signUp
+    );
   };
 
   getRouter = () => {
