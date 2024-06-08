@@ -8,4 +8,12 @@ export default class AuthService {
       throw new Error(error);
     }
   };
+
+  login = async (user) => {
+    try {
+      return User.findOne({ email: user.email });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
