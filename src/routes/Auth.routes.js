@@ -13,7 +13,7 @@ export default class AuthRoutes {
   }
 
   #initialise = () => {
-    this.#router.post("/", this.#controller.addNewUser);
+    this.#router.post("/signup", this.#controller.signUp);
   };
 
   getRouter = () => {

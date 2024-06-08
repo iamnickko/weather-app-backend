@@ -7,7 +7,7 @@ export default class AuthController {
     this.#service = service;
   }
 
-  addNewUser = async (req, res) => {
+  signUp = async (req, res) => {
     try {
       const newUser = await this.#service.addNewUser(req.body);
       return res.status(201).json(newUser);
