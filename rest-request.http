@@ -12,9 +12,9 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "name": "Hans Zimmer",
-    "email": "",
-    "password": "password123"
+    "name": "ddas",
+    "email": "valid@email.com",
+    "password": "password"
 }
 
 ###

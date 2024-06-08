@@ -17,9 +17,9 @@ export default class AuthRoutes {
     this.#router.post(
       "/signup",
       [
-        body("name").exists().escape(),
-        body("email").exists().normalizeEmail().escape().isEmail(),
-        body("password").exists().escape(),
+        body("name").trim().exists().isLength({ min: 2 }).escape(),
+        body("email").trim().exists().normalizeEmail().escape().isEmail(),
+        body("password").trim().exists().isLength({ min: 8 }).escape(),
       ],
       this.#controller.signUp
     );
