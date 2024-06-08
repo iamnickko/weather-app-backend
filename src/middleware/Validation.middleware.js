@@ -1,4 +1,5 @@
 import { body, validationResult } from "express-validator";
+import User from "../models/User.model.js";
 
 export default class Validation {
   static checkSignUpFields = () => {
@@ -21,6 +22,16 @@ export default class Validation {
       return res
         .status(422)
         .json({ message: "Unable to process because the data is invalid." });
+    }
+    next();
+  };
+
+  static checkDuplicateUser = async (req, res, next) => {
+    const userToCheck = await User.findOne({ email: req.body.email });
+    if (userToCheck) {
+      return res
+        .status(400)
+        .json({ message: "Sign up failed - email already exists." });
     }
     next();
   };

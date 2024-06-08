@@ -16,7 +16,7 @@ export default class AuthRoutes {
   #initialise = () => {
     this.#router.post(
       "/signup",
-      Validation.checkSignUpFields(),
+      [Validation.checkSignUpFields(), Validation.checkDuplicateUser],
       this.#controller.signUp
     );
   };
@@ -24,6 +24,7 @@ export default class AuthRoutes {
   getRouter = () => {
     return this.#router;
   };
+
   getRouterPath = () => {
     return this.#routerPath;
   };
