@@ -1,0 +1,14 @@
+POST http://localhost:3000/auth
+content-type: application/json
+
+{
+    "name": "sample",
+    "email": "Wed, 21 Oct 2015 18:27:50 GMT",
+    "password": "password"
+}
+
+###
+
+GET http://localhost:3000/auth
+
+###
