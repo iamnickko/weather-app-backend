@@ -10,12 +10,12 @@ export default class AuthController {
 
   signUp = async (req, res) => {
     try {
-      const validationErrors = validationResult(req);
-      if (validationErrors.errors.length !== 0) {
-        return res
-          .status(422)
-          .json({ message: "Unable to process because the data is invalid." });
-      }
+      // const validationErrors = validationResult(req);
+      // if (validationErrors.errors.length !== 0) {
+      //   return res
+      //     .status(422)
+      //     .json({ message: "Unable to process because the data is invalid." });
+      // }
       const newUser = await this.#service.signUp(req.body);
       return res.status(201).json(newUser);
     } catch (error) {

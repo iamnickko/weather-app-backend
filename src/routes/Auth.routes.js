@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { body } from "express-validator";
+import Validation from "../middleware/Validation.middleware.js";
 
 export default class AuthRoutes {
   #router;
@@ -16,11 +16,7 @@ export default class AuthRoutes {
   #initialise = () => {
     this.#router.post(
       "/signup",
-      [
-        body("name").trim().exists().isLength({ min: 2 }).escape(),
-        body("email").trim().exists().normalizeEmail().escape().isEmail(),
-        body("password").trim().exists().isLength({ min: 8 }).escape(),
-      ],
+      Validation.checkSignUpFields(),
       this.#controller.signUp
     );
   };
