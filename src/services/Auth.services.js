@@ -1,9 +1,12 @@
+import bcrypt from "bcrypt";
 import User from "../models/User.model.js";
 
 export default class AuthService {
   signUp = async (newUser) => {
+    const { password, ...others } = newUser;
     try {
-      return await User.create(newUser);
+      const hashedPassword = bcrypt.hashSync(password, 10);
+      return await User.create({ password: hashedPassword, ...others });
     } catch (error) {
       throw new Error(error);
     }
