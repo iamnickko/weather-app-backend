@@ -14,7 +14,13 @@ export default class AuthService {
 
   login = async (user) => {
     try {
-      return User.findOne({ email: user.email });
+      const dbUser = await User.findOne({ email: user.email });
+      console.log(dbUser);
+      const validPassword = bcrypt.compareSync(user.password, dbUser.password);
+      if (validPassword) return dbUser;
+      // } else {
+      //   return res.status(422).json({ message: "Unauthorised details." });
+      // }
     } catch (error) {
       console.log(error);
     }
