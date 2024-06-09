@@ -23,7 +23,11 @@ export default class AuthController {
         return res
           .status(401)
           .json({ message: "Invalid or unauthorised details." });
-      return res.status(200).json({ userToken });
+      console.log(userToken);
+      return res
+        .set("X-Access-Token", userToken.accessToken)
+        .status(200)
+        .json({ userToken });
     } catch (error) {
       console.log(error);
     }

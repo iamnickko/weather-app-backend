@@ -23,7 +23,7 @@ export default class AuthService {
           process.env.JWT_SECRET,
           { expiresIn: 86400 }
         );
-        return { accessToken: token, ...user };
+        return { accessToken: token, name: user.name, email: user.email };
       }
     } catch (error) {
       console.log(error);
