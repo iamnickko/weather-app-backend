@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import User from "../models/User.model.js";
 
 export default class AuthService {
@@ -15,12 +16,15 @@ export default class AuthService {
   login = async (user) => {
     try {
       const dbUser = await User.findOne({ email: user.email });
-      console.log(dbUser);
       const validPassword = bcrypt.compareSync(user.password, dbUser.password);
-      if (validPassword) return dbUser;
-      // } else {
-      //   return res.status(422).json({ message: "Unauthorised details." });
-      // }
+      if (validPassword) {
+        const token = jwt.sign(
+          { id: dbUser._id.toString() },
+          process.env.JWT_SECRET,
+          { expiresIn: 86400 }
+        );
+        return { accessToken: token, ...user };
+      }
     } catch (error) {
       console.log(error);
     }
