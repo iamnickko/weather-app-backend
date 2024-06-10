@@ -3,8 +3,8 @@ import AuthService from "../services/Auth.services.js";
 export default class AuthController {
   #service;
 
-  constructor(service = new AuthService()) {
-    this.#service = service;
+  constructor() {
+    this.#service = new AuthService();
   }
 
   signUp = async (req, res) => {
@@ -27,7 +27,7 @@ export default class AuthController {
       return res
         .set("X-Access-Token", validUser.accessToken)
         .status(200)
-        .json({ validUser });
+        .json({ ...validUser });
     } catch (error) {
       console.log(error);
     }

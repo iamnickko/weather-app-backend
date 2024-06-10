@@ -51,6 +51,8 @@ content-type: application/json
 }
 
 ###
-GET http://localhost:3000/auth
+GET http://localhost:3000/auth/
+Content-Type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjVkYmI4YjQ0MjY1N2UyZDExOTQ4ZCIsImlhdCI6MTcxODAzNjY1OSwiZXhwIjoxNzE4MTIzMDU5fQ.edZTEhB00kC4tze2CyznBpuRmAk7JCH-4Ue2suot_1k
 
 ###

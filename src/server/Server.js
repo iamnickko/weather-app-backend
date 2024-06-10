@@ -1,4 +1,5 @@
 import express from "express";
+import AuthMiddleware from "../middleware/Auth.middleware.js";
 
 export default class Server {
   #app;
@@ -36,6 +37,7 @@ export default class Server {
       );
       next();
     });
+    this.#app.use((req, res, next) => AuthMiddleware.verify(req, res, next));
 
     this.#app.use(this.#router.getRouterPath(), this.#router.getRouter());
   };
