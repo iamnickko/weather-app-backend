@@ -1,6 +1,6 @@
 import Config from "./config/Config.js";
 import Database from "./db/Database.js";
-import Server from "./Server/Server.js";
+import Server from "./server/Server.js";
 import AuthRouter from "./routes/Auth.routes.js";
 import AuthController from "./controllers/Auth.controller.js";
 

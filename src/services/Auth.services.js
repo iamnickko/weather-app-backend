@@ -18,12 +18,12 @@ export default class AuthService {
       const dbUser = await User.findOne({ email: user.email });
       const validPassword = bcrypt.compareSync(user.password, dbUser.password);
       if (validPassword) {
-        const token = jwt.sign(
+        const accessToken = jwt.sign(
           { id: dbUser._id.toString() },
           process.env.JWT_SECRET,
           { expiresIn: 86400 }
         );
-        return { accessToken: token, name: user.name, email: user.email };
+        return { accessToken, name: user.name, email: user.email };
       }
     } catch (error) {
       console.log(error);

@@ -18,16 +18,16 @@ export default class AuthController {
 
   login = async (req, res) => {
     try {
-      const userToken = await this.#service.login(req.body);
-      if (!userToken)
+      const validUser = await this.#service.login(req.body);
+      if (!validUser)
         return res
           .status(401)
           .json({ message: "Invalid or unauthorised details." });
-      console.log(userToken);
+      console.log(validUser);
       return res
-        .set("X-Access-Token", userToken.accessToken)
+        .set("X-Access-Token", validUser.accessToken)
         .status(200)
-        .json({ userToken });
+        .json({ validUser });
     } catch (error) {
       console.log(error);
     }
