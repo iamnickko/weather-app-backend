@@ -1,3 +1,4 @@
+import AuthController from "../controllers/Auth.controller.js";
 import { Router } from "express";
 import Validation from "../middleware/Validation.middleware.js";
 
@@ -6,10 +7,10 @@ export default class AuthRoutes {
   #routerPath;
   #controller;
 
-  constructor(routerPath, controller) {
-    this.#routerPath = routerPath;
+  constructor() {
+    this.#routerPath = "/auth";
     this.#router = Router();
-    this.#controller = controller;
+    this.#controller = new AuthController();
     this.#initialise();
   }
 

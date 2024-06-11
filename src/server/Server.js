@@ -6,14 +6,16 @@ export default class Server {
   #host;
   #port;
   #server;
-  #router;
+  #authRouter;
+  #locationRouter;
 
-  constructor(port, host, router) {
+  constructor(port, host, authRouter, locationRouter) {
     this.#app = express();
     this.#port = port;
     this.#host = host;
     this.#server = null;
-    this.#router = router;
+    this.#authRouter = authRouter;
+    this.#locationRouter = locationRouter;
   }
 
   start = () => {
@@ -37,8 +39,15 @@ export default class Server {
       );
       next();
     });
-    this.#app.use((req, res, next) => AuthMiddleware.verify(req, res, next));
+    // this.#app.use((req, res, next) => AuthMiddleware.verify(req, res, next));
 
-    this.#app.use(this.#router.getRouterPath(), this.#router.getRouter());
+    this.#app.use(
+      this.#authRouter.getRouterPath(),
+      this.#authRouter.getRouter()
+    );
+    this.#app.use(
+      this.#locationRouter.getRouterPath(),
+      this.#locationRouter.getRouter()
+    );
   };
 }

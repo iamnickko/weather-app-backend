@@ -14,7 +14,7 @@ content-type: application/json
 
 {
     "name": "The Rock",
-    "email": "nextto@ahardplace.com",
+    "email": "paper@scissors.com",
     "password": "password123"
 }
 
@@ -23,7 +23,7 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "name": "daaaa",
+    "name": "Valid Name",
     "email": "valid@email.com",
     "password": "password"
 }
@@ -35,7 +35,7 @@ content-type: application/json
 
 {
     "name": "The Rock",
-    "email": "nextto@ahardplace.com",
+    "email": "paper@scissors.com",
     "password": "password123"
 }
 
@@ -45,14 +45,58 @@ POST http://localhost:3000/auth/login
 content-type: application/json
 
 {
-    "name": "daaaa",
+    "name": "Valid Name",
     "email": "valid@email.com",
     "password": "password"
 }
 
 ###
-GET http://localhost:3000/auth/
+
+POST http://localhost:3000/auth/login
+content-type: application/json
+
+{
+    "name": "Test person",
+    "email": "hiiii@blahblah.com",
+    "password": "password123"
+}
+
+###
+
+GET http://localhost:3000/
 Content-Type: application/json
 X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjVkYmI4YjQ0MjY1N2UyZDExOTQ4ZCIsImlhdCI6MTcxODAzNjY1OSwiZXhwIjoxNzE4MTIzMDU5fQ.edZTEhB00kC4tze2CyznBpuRmAk7JCH-4Ue2suot_1k
+
+###
+
+PUT http://localhost:3000/savedLocations
+content-type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjVkYmI4YjQ0MjY1N2UyZDExOTQ4ZCIsImlhdCI6MTcxODAzNjY1OSwiZXhwIjoxNzE4MTIzMDU5fQ.edZTEhB00kC4tze2CyznBpuRmAk7JCH-4Ue2suot_1k
+
+{
+    "email": "hiiii@blahblah.com",
+    "name" : "Dublin",
+    "apiId": 5344157,
+    "coord": {
+        "lat": 37.7021,
+        "lon": -121.9358
+    }
+}
+
+
+###
+PUT http://localhost:3000/savedLocations
+content-type: application/json
+
+{
+    "email": "hiiii@blahblah.com",
+    "apiId": 2643743,
+    "name": "London",
+    "coord": {
+      "lat": 51.5085,
+      "lon": -0.1257
+    }
+}
+
 
 ###

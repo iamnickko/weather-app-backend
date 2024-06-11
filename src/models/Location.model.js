@@ -1,14 +1,15 @@
-import { Schema, model } from "mongoose";
+import { Schema } from "mongoose";
 
-const locationSchema = new Schema({
-  name: { type: String, required: true },
-  apiId: { type: Number, required: true },
-  coord: {
-    lat: { type: Number, required: true },
-    lon: { type: Number, required: true },
+const locationSchema = new Schema(
+  {
+    name: { type: String, required: true },
+    apiId: { type: Number, required: true },
+    coord: {
+      lat: { type: Number, required: true },
+      lon: { type: Number, required: true },
+    },
   },
-});
+  { _id: false }
+);
 
-const Location = model("Location", locationSchema);
-
-export default Location;
+export default locationSchema;
