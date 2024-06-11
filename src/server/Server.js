@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import AuthMiddleware from "../middleware/Auth.middleware.js";
 
@@ -32,6 +33,7 @@ export default class Server {
     //   res.header("X-Access-Token", "");
     //   next();
     // });
+    this.#app.use(cors());
     this.#app.use((req, res, next) => {
       res.header(
         "Access-Control-Allow-Headers",

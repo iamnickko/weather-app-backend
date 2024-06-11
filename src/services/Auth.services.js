@@ -3,11 +3,28 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.model.js";
 
 export default class AuthService {
+  //  signToken = (user) => {
+  //   return (accessToken = jwt.sign(
+  //     { id: user._id.toString() },
+  //     process.env.JWT_SECRET,
+  //     { expiresIn: 86400 }
+  //   ));
+  // };
+
   signUp = async (newUser) => {
     const { password, ...others } = newUser;
     try {
       const hashedPassword = bcrypt.hashSync(password, 10);
-      return await User.create({ password: hashedPassword, ...others });
+      const newUser = await User.create({
+        password: hashedPassword,
+        ...others,
+      });
+      const accessToken = jwt.sign(
+        { id: newUser._id.toString() },
+        process.env.JWT_SECRET,
+        { expiresIn: 86400 }
+      );
+      return { accessToken, newUser };
     } catch (error) {
       throw new Error(error);
     }
