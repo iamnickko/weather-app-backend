@@ -3,8 +3,8 @@ import AuthService from "../services/Auth.services.js";
 export default class AuthController {
   #service;
 
-  constructor() {
-    this.#service = new AuthService();
+  constructor(service = new AuthService()) {
+    this.#service = service;
   }
 
   signUp = async (req, res) => {

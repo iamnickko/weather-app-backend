@@ -7,10 +7,10 @@ export default class AuthRoutes {
   #routerPath;
   #controller;
 
-  constructor() {
+  constructor(controller = new AuthController()) {
     this.#routerPath = "/auth";
     this.#router = Router();
-    this.#controller = new AuthController();
+    this.#controller = controller;
     this.#initialise();
   }
 
