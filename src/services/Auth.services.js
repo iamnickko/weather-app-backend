@@ -16,8 +16,8 @@ export default class AuthService {
     try {
       const hashedPassword = bcrypt.hashSync(password, 10);
       const newUser = await User.create({
-        password: hashedPassword,
         ...others,
+        password: hashedPassword,
       });
       const accessToken = jwt.sign(
         { id: newUser._id.toString() },
@@ -40,16 +40,17 @@ export default class AuthService {
           process.env.JWT_SECRET,
           { expiresIn: 86400 }
         );
-
         return {
           accessToken,
-          name: user.name,
-          email: user.email,
+          name: dbUser.name,
+          email: dbUser.email,
           savedLocations: dbUser.savedLocations,
         };
+      } else {
+        throw new Error("Invalid password.");
       }
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
   };
 }

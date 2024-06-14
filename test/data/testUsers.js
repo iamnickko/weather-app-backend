@@ -3,7 +3,7 @@ const testData = {
     {
       name: "The Rock",
       email: "paper@scissors.com",
-      password: "$2b$10$BoeSx9soIdh9sJCuJZ1ZBOmkZFEFgTpiiOc.722oWO0Zt7oNpOOQe",
+      password: "Password456!",
       savedLocations: [
         {
           coord: {
@@ -18,8 +18,7 @@ const testData = {
     {
       name: "Valid Name",
       email: "valid@email.com",
-      password:
-        "Passw$2b$10$1szlGDHgYtWn0Um8YVKo6.QixzAL9ezkmx2fH9tASx6IiKHuOMTQmord321!",
+      password: "Password789!",
       savedLocations: [
         {
           name: "London",
@@ -38,8 +37,9 @@ const testData = {
     password: "Password123!",
   },
   existingUser: {
+    name: "The Rock",
     email: "paper@scissors.com",
-    password: "",
+    password: "Password456!",
   },
 };
 

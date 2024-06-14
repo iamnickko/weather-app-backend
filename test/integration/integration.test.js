@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import { expect } from "chai";
 import sinon from "sinon";
 import supertest from "supertest";
@@ -12,7 +13,7 @@ import testData from "../data/testUsers.js";
 import User from "../../src/models/User.model.js";
 import AuthController from "../../src/controllers/Auth.controller.js";
 
-const { testUsers, newUser } = testData;
+const { testUsers, newUser, existingUser } = testData;
 
 describe("Integration Tests:", () => {
   let server;
@@ -50,11 +51,23 @@ describe("Integration Tests:", () => {
       throw new Error();
     }
     try {
-      await User.insertMany(testUsers);
-      console.log("Database successfully filled with users.");
+      const hashedPassword = bcrypt.hashSync(testUsers[0].password, 10);
+      const hashedTestUser0 = { ...testUsers[0], password: hashedPassword };
+      await User.create(hashedTestUser0);
+      console.log("Database successfully added first user.");
     } catch (error) {
       console.log(error.message);
-      console.log("Error when inserting test users.");
+      console.log("Error when inserting first user.");
+      throw new Error();
+    }
+    try {
+      const hashedPassword = bcrypt.hashSync(testUsers[1].password, 10);
+      const hashedTestUser1 = { ...testUsers[1], password: hashedPassword };
+      await User.create(hashedTestUser1);
+      console.log("Database successfully added second user.");
+    } catch (error) {
+      console.log(error.message);
+      console.log("Error when inserting second user.");
       throw new Error();
     }
   });
@@ -96,6 +109,57 @@ describe("Integration Tests:", () => {
       const response = await request.post("/auth/signup").send(invalidUser);
       expect(response.status).to.equal(422);
       expect(response.body).to.have.property("message");
+    });
+
+    it("should respond with a 422 status code if invalid data - no name key", async () => {
+      const invalidUser = { ...newUser };
+      delete invalidUser.name;
+      const response = await request.post("/auth/signup").send(invalidUser);
+      expect(response.status).to.equal(422);
+      expect(response.body).to.have.property("message");
+    });
+
+    it("should respond with a 422 status code if invalid data - no email key", async () => {
+      const invalidUser = { ...newUser };
+      delete invalidUser.email;
+      const response = await request.post("/auth/signup").send(invalidUser);
+      expect(response.status).to.equal(422);
+      expect(response.body).to.have.property("message");
+    });
+
+    it("should respond with a 422 status code if invalid data - no password key", async () => {
+      const invalidUser = { ...newUser };
+      delete invalidUser.password;
+      const response = await request.post("/auth/signup").send(invalidUser);
+      expect(response.status).to.equal(422);
+      expect(response.body).to.have.property("message");
+    });
+
+    it("should respond with a 422 status code if invalid data - with additional key", async () => {
+      const invalidUser = { ...newUser, injection: "bad person code" };
+      delete invalidUser.password;
+      const response = await request.post("/auth/signup").send(invalidUser);
+      expect(response.status).to.equal(422);
+      expect(response.body).to.have.property("message");
+    });
+
+    it("should respond with a 400 status code if email already exists - prevent duplicate", async () => {
+      const response = await request.post("/auth/signup").send(existingUser);
+      expect(response.status).to.equal(400);
+      expect(response.body).to.have.property("message");
+      expect(response.body.message).to.equal(
+        "Sign up failed - email already exists."
+      );
+    });
+  });
+
+  describe("POST requests to /login on authRoutes:", () => {
+    const { email, password } = existingUser;
+    const userLogin = { email, password };
+
+    it("should return a 200 status code if email and password are valid", async () => {
+      const response = await request.post("/auth/login").send(userLogin);
+      expect(response.status).to.equal(200);
     });
   });
 });
