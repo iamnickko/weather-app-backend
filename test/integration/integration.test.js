@@ -72,7 +72,7 @@ describe("Integration Tests:", () => {
     }
   });
 
-  describe.skip("POST requests to /signup on authRoutes:", () => {
+  describe("POST requests to /signup on authRoutes:", () => {
     it("should respond with a 201 status code for a POST request to /signup.", async () => {
       const response = await request.post("/auth/signup").send(newUser);
       expect(response.status).to.equal(201);
@@ -172,6 +172,15 @@ describe("Integration Tests:", () => {
       const response = await request.post("/auth/login").send(invalidLogin);
       console.log(response.body.message);
       expect(response.status).to.equal(401);
+      expect(response.body.message).to.equal("Invalid credentials.");
+    });
+
+    it("should return a 401 status code if password is invalid", async () => {
+      const invalidLogin = { email, password: "invalid" };
+      const response = await request.post("/auth/login").send(invalidLogin);
+      console.log(response.body.message);
+      expect(response.status).to.equal(401);
+      expect(response.body.message).to.equal("Invalid credentials.");
     });
   });
 });
