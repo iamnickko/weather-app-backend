@@ -4,7 +4,7 @@ content-type: application/json
 {
     "name": "Test person",
     "email": "hiiii@blahblah.com",
-    "password": "password123"
+    "password": "Password123!"
 }
 
 ###
@@ -15,7 +15,7 @@ content-type: application/json
 {
     "name": "The Rock",
     "email": "paper@scissors.com",
-    "password": "password123"
+    "password": "Password456!"
 }
 
 ###
@@ -25,7 +25,7 @@ content-type: application/json
 {
     "name": "Valid Name",
     "email": "valid@email.com",
-    "password": "password"
+    "password": "Password789!"
 }
 
 ###
@@ -36,7 +36,7 @@ content-type: application/json
 {
     "name": "The Rock",
     "email": "paper@scissors.com",
-    "password": "password123"
+    "password": "Password456!"
 }
 
 ###
@@ -47,7 +47,7 @@ content-type: application/json
 {
     "name": "Valid Name",
     "email": "valid@email.com",
-    "password": "password"
+    "password": "Password789!"
 }
 
 ###
@@ -58,7 +58,7 @@ content-type: application/json
 {
     "name": "Test person",
     "email": "hiiii@blahblah.com",
-    "password": "password123"
+    "password": "Password123!"
 }
 
 ###

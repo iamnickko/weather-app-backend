@@ -53,9 +53,14 @@ describe("Integration Tests:", () => {
   });
 
   describe("POST requests to /signup on authRoutes", () => {
-    it("should response with a 201 status code for a POST request to /signup", async () => {
+    it("should respond with a 201 status code for a POST request to /signup", async () => {
       const response = await request.post("/auth/signup").send(newUser);
       expect(response.status).to.equal(201);
+    });
+
+    it('should respond with a "X-Access-Token" header', async () => {
+      const response = await request.post("/auth/signup").send(newUser);
+      expect(response.headers["x-access-token"]).to.exist;
     });
   });
 });

@@ -37,6 +37,10 @@ const testData = {
     email: "newuser@theiremail.com",
     password: "Password123!",
   },
+  existingUser: {
+    email: "paper@scissors.com",
+    password: "",
+  },
 };
 
 export default testData;
