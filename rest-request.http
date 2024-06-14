@@ -74,7 +74,7 @@ content-type: application/json
 X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjVkYmI4YjQ0MjY1N2UyZDExOTQ4ZCIsImlhdCI6MTcxODAzNjY1OSwiZXhwIjoxNzE4MTIzMDU5fQ.edZTEhB00kC4tze2CyznBpuRmAk7JCH-4Ue2suot_1k
 
 {
-    "email": "hiiii@blahblah.com",
+    "email": "paper@scissors.com",
     "name" : "Dublin",
     "apiId": 5344157,
     "coord": {
@@ -89,7 +89,7 @@ PUT http://localhost:3000/savedLocations
 content-type: application/json
 
 {
-    "email": "hiiii@blahblah.com",
+    "email": "valid@email.com",
     "apiId": 2643743,
     "name": "London",
     "coord": {
