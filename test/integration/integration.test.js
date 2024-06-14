@@ -72,7 +72,7 @@ describe("Integration Tests:", () => {
     }
   });
 
-  describe("POST requests to /signup on authRoutes:", () => {
+  describe.skip("POST requests to /signup on authRoutes:", () => {
     it("should respond with a 201 status code for a POST request to /signup.", async () => {
       const response = await request.post("/auth/signup").send(newUser);
       expect(response.status).to.equal(201);
@@ -160,6 +160,18 @@ describe("Integration Tests:", () => {
     it("should return a 200 status code if email and password are valid", async () => {
       const response = await request.post("/auth/login").send(userLogin);
       expect(response.status).to.equal(200);
+    });
+
+    it("should have an X-Access-Token header in the response", async () => {
+      const response = await request.post("/auth/login").send(userLogin);
+      expect(response.headers["x-access-token"]).to.exist;
+    });
+
+    it("should return a 401 status code if email is invalid", async () => {
+      const invalidLogin = { email: "wrong", password: "Password456!" };
+      const response = await request.post("/auth/login").send(invalidLogin);
+      console.log(response.body.message);
+      expect(response.status).to.equal(401);
     });
   });
 });

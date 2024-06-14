@@ -20,14 +20,20 @@ export default class AuthController {
     try {
       const validUser = await this.#service.login(req.body);
       if (!validUser) {
-        res.status(401).json({ message: "Invalid or unauthorised details." });
+        return res
+          .status(401)
+          .json({ message: "Invalid or unauthorised details." });
       }
       res
         .set("X-Access-Token", validUser.accessToken)
         .status(200)
         .json({ ...validUser });
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      if (error.message === "Invalid credentials.") {
+        res.status(401).json({ message: error.message });
+      } else {
+        res.status(500).json({ message: "An unexpected error occurred." });
+      }
     }
   };
 }
