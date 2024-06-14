@@ -1,7 +1,6 @@
 const testData = {
   testUsers: [
     {
-      _id: "66687296660ab591ab88e029",
       name: "The Rock",
       email: "paper@scissors.com",
       password: "$2b$10$BoeSx9soIdh9sJCuJZ1ZBOmkZFEFgTpiiOc.722oWO0Zt7oNpOOQe",
@@ -15,15 +14,12 @@ const testData = {
           apiId: 5344157,
         },
       ],
-      __v: 0,
     },
     {
-      _id: {
-        $oid: "6668729a660ab591ab88e02d",
-      },
       name: "Valid Name",
       email: "valid@email.com",
-      password: "$2b$10$1szlGDHgYtWn0Um8YVKo6.QixzAL9ezkmx2fH9tASx6IiKHuOMTQm",
+      password:
+        "Passw$2b$10$1szlGDHgYtWn0Um8YVKo6.QixzAL9ezkmx2fH9tASx6IiKHuOMTQmord321!",
       savedLocations: [
         {
           name: "London",
@@ -34,7 +30,8 @@ const testData = {
           },
         },
       ],
-      __v: 0,
     },
   ],
 };
+
+export default testData;

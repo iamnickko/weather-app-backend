@@ -19,6 +19,10 @@ export default class Server {
     this.#locationRouter = locationRouter;
   }
 
+  getApp = () => {
+    return this.#app;
+  };
+
   start = () => {
     this.#server = this.#app.listen(this.#port, this.#host, () => {
       console.log(
@@ -51,5 +55,9 @@ export default class Server {
       this.#locationRouter.getRouterPath(),
       this.#locationRouter.getRouter()
     );
+  };
+
+  close = () => {
+    this.#server?.close();
   };
 }

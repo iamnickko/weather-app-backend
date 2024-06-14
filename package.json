@@ -7,8 +7,8 @@
   "scripts": {
     "start": "NODE_ENV=dev nodemon src/index.js",
     "start-win": "SET NODE_ENV=dev&&nodemon src/index.js",
-    "test": "NODE_ENV=test mocha --timeout 10000 --exit",
-    "test-win": "SET NODE_ENV=test&& mocha --timeout 10000 --exit"
+    "test": "NODE_ENV=test mocha --timeout 10000 --exit --recursive",
+    "test-win": "SET NODE_ENV=test&& mocha --timeout 10000 --exit --recursive"
   },
   "author": "Nick Ko",
   "license": "ISC",
@@ -24,6 +24,8 @@
   "devDependencies": {
     "chai": "^5.1.1",
     "chai-http": "^5.0.0",
-    "mocha": "^10.4.0"
+    "mocha": "^10.4.0",
+    "sinon": "^18.0.0",
+    "supertest": "^7.0.0"
   }
 }
