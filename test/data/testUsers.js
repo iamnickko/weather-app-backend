@@ -32,6 +32,11 @@ const testData = {
       ],
     },
   ],
+  newUser: {
+    name: "New User",
+    email: "newuser@theiremail.com",
+    password: "Password123!",
+  },
 };
 
 export default testData;

@@ -9,7 +9,7 @@ import Server from "../../src/server/Server.js";
 import testData from "../data/testUsers.js";
 import User from "../../src/models/User.model.js";
 
-const { testUsers } = testData;
+const { testUsers, newUser } = testData;
 
 describe("Integration Tests:", () => {
   let server;
@@ -52,7 +52,10 @@ describe("Integration Tests:", () => {
     }
   });
 
-  it("should first", () => {
-    expect(true).to.be.true;
+  describe("POST requests to /signup on authRoutes", () => {
+    it("should response with a 201 status code for a POST request to /signup", async () => {
+      const response = await request.post("/auth/signup").send(newUser);
+      expect(response.status).to.equal(201);
+    });
   });
 });
