@@ -33,7 +33,7 @@ describe("Testing AuthController", () => {
     loginUser = { email, password };
   });
 
-  describe.skip("signUp tests", () => {
+  describe("signUp tests", () => {
     it("should respond with a 201 status code when sent a valid new user", async () => {
       authServices.signUp.resolves(createdUser);
 

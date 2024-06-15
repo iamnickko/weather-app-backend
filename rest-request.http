@@ -2,7 +2,6 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "name": "Test person",
     "email": "hiiii@blahblah.com",
     "password": "Password123!"
 }
@@ -13,7 +12,6 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "name": "The Rock",
     "email": "paper@scissors.com",
     "password": "Password456!"
 }
@@ -23,7 +21,6 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "name": "Valid Name",
     "email": "valid@email.com",
     "password": "Password789!"
 }
@@ -34,7 +31,6 @@ POST http://localhost:3000/auth/login
 content-type: application/json
 
 {
-    "name": "The Rock",
     "email": "paper@scissors.com",
     "password": "Password456!"
 }
@@ -45,7 +41,6 @@ POST http://localhost:3000/auth/login
 content-type: application/json
 
 {
-    "name": "Valid Name",
     "email": "valid@email.com",
     "password": "Password789!"
 }
@@ -56,7 +51,6 @@ POST http://localhost:3000/auth/login
 content-type: application/json
 
 {
-    "name": "Test person",
     "email": "hiiii@blahblah.com",
     "password": "Password123!"
 }
@@ -105,7 +99,6 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "name": "Nick Ko",
     "email": "nicholasedwardko@gmail.com",
     "password": "password123"
 }

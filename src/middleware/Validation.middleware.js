@@ -5,7 +5,6 @@ export default class Validation {
   static checkSignUpFields = () => {
     try {
       return [
-        body("name").trim().exists().isLength({ min: 2 }).escape(),
         body("email").trim().exists().normalizeEmail().escape().isEmail(),
         body("password").trim().exists().isLength({ min: 8 }).escape(),
         Validation.handleValidationErrors,

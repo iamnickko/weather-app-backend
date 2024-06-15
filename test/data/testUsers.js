@@ -1,7 +1,6 @@
 const testData = {
   testUsers: [
     {
-      name: "The Rock",
       email: "paper@scissors.com",
       password: "Password456!",
       savedLocations: [
@@ -16,7 +15,6 @@ const testData = {
       ],
     },
     {
-      name: "Valid Name",
       email: "valid@email.com",
       password: "Password789!",
       savedLocations: [
@@ -32,12 +30,10 @@ const testData = {
     },
   ],
   newUser: {
-    name: "New User",
     email: "newuser@theiremail.com",
     password: "Password123!",
   },
   existingUser: {
-    name: "The Rock",
     email: "paper@scissors.com",
     password: "Password456!",
   },

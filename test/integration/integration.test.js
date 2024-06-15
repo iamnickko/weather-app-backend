@@ -72,7 +72,7 @@ describe("Integration Tests:", () => {
     }
   });
 
-  describe.skip("POST requests to /signup on authRoutes:", () => {
+  describe("POST requests to /signup on authRoutes:", () => {
     it("should respond with a 201 status code for a POST request to /signup.", async () => {
       const response = await request.post("/auth/signup").send(newUser);
       expect(response.status).to.equal(201);
@@ -90,13 +90,6 @@ describe("Integration Tests:", () => {
       expect(response.status).to.equal(500);
     });
 
-    it("should respond with a 422 status code if invalid data - missing name", async () => {
-      const invalidUser = { ...newUser, name: null };
-      const response = await request.post("/auth/signup").send(invalidUser);
-      expect(response.status).to.equal(422);
-      expect(response.body).to.have.property("message");
-    });
-
     it("should respond with a 422 status code if invalid data - missing email", async () => {
       const invalidUser = { ...newUser, email: null };
       const response = await request.post("/auth/signup").send(invalidUser);
@@ -106,14 +99,6 @@ describe("Integration Tests:", () => {
 
     it("should respond with a 422 status code if invalid data - missing password", async () => {
       const invalidUser = { ...newUser, password: null };
-      const response = await request.post("/auth/signup").send(invalidUser);
-      expect(response.status).to.equal(422);
-      expect(response.body).to.have.property("message");
-    });
-
-    it("should respond with a 422 status code if invalid data - no name key", async () => {
-      const invalidUser = { ...newUser };
-      delete invalidUser.name;
       const response = await request.post("/auth/signup").send(invalidUser);
       expect(response.status).to.equal(422);
       expect(response.body).to.have.property("message");
@@ -153,7 +138,7 @@ describe("Integration Tests:", () => {
     });
   });
 
-  describe.skip("POST requests to /login on authRoutes:", () => {
+  describe("POST requests to /login on authRoutes:", () => {
     const { email, password } = existingUser;
     const userLogin = { email, password };
 

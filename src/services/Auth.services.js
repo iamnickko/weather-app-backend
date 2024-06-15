@@ -49,7 +49,6 @@ export default class AuthService {
 
     return {
       accessToken,
-      name: dbUser.name,
       email: dbUser.email,
       savedLocations: dbUser.savedLocations,
     };
