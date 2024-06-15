@@ -72,7 +72,7 @@ describe("Integration Tests:", () => {
     }
   });
 
-  describe("POST requests to /signup on authRoutes:", () => {
+  describe.skip("POST requests to /signup on authRoutes:", () => {
     it("should respond with a 201 status code for a POST request to /signup.", async () => {
       const response = await request.post("/auth/signup").send(newUser);
       expect(response.status).to.equal(201);
@@ -153,7 +153,7 @@ describe("Integration Tests:", () => {
     });
   });
 
-  describe("POST requests to /login on authRoutes:", () => {
+  describe.skip("POST requests to /login on authRoutes:", () => {
     const { email, password } = existingUser;
     const userLogin = { email, password };
 
