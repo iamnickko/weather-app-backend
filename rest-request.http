@@ -57,15 +57,9 @@ content-type: application/json
 
 ###
 
-GET http://localhost:3000/
-Content-Type: application/json
-X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjVkYmI4YjQ0MjY1N2UyZDExOTQ4ZCIsImlhdCI6MTcxODAzNjY1OSwiZXhwIjoxNzE4MTIzMDU5fQ.edZTEhB00kC4tze2CyznBpuRmAk7JCH-4Ue2suot_1k
-
-###
-
 PUT http://localhost:3000/savedLocations
 content-type: application/json
-X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjVkYmI4YjQ0MjY1N2UyZDExOTQ4ZCIsImlhdCI6MTcxODAzNjY1OSwiZXhwIjoxNzE4MTIzMDU5fQ.edZTEhB00kC4tze2CyznBpuRmAk7JCH-4Ue2suot_1k
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmUwYmU4Yzg4MDIzNDgyNTdkM2E2MCIsImlhdCI6MTcxODQ4ODIyMywiZXhwIjoxNzE4NTc0NjIzfQ.4WJtPgg6LzDGurxvaPeMLuPP7zxv50qmdB4eU_tC1b4
 
 {
     "email": "paper@scissors.com",

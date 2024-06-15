@@ -24,7 +24,7 @@ export default class AuthService {
         process.env.JWT_SECRET,
         { expiresIn: 86400 }
       );
-      return { accessToken, newUser: createdUser };
+      return { newUser: createdUser };
     } catch (error) {
       throw new Error(error);
     }

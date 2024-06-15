@@ -1,5 +1,6 @@
 import { Router } from "express";
 import LocationController from "../controllers/Location.controller.js";
+import AuthMiddleware from "../middleware/Auth.middleware.js";
 
 export default class LocationRoutes {
   #router;
@@ -17,7 +18,11 @@ export default class LocationRoutes {
     this.#router.get("/", (req, res) => {
       res.status(200).json({ message: "This will be the homepage" });
     });
-    this.#router.put("/savedLocations", this.#controller.addLocation);
+    this.#router.put(
+      "/savedLocations",
+      [AuthMiddleware.authoriseRequest],
+      this.#controller.addLocation
+    );
   };
 
   getRouterPath = () => {
