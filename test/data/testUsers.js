@@ -10,7 +10,7 @@ const testData = {
             lon: -121.9358,
           },
           name: "Dublin",
-          apiId: 5344157,
+          id: 5344157,
         },
       ],
     },
@@ -20,7 +20,7 @@ const testData = {
       savedLocations: [
         {
           name: "London",
-          apiId: 2643743,
+          id: 2643743,
           coord: {
             lat: 51.5085,
             lon: -0.1257,
