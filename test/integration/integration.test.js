@@ -155,7 +155,6 @@ describe("Integration Tests:", () => {
     it("should return a 401 status code if email is invalid", async () => {
       const invalidLogin = { email: "wrong", password: "Password456!" };
       const response = await request.post("/auth/login").send(invalidLogin);
-      console.log(response.body.message);
       expect(response.status).to.equal(401);
       expect(response.body.message).to.equal("Invalid credentials.");
     });
@@ -163,7 +162,6 @@ describe("Integration Tests:", () => {
     it("should return a 401 status code if password is invalid", async () => {
       const invalidLogin = { email, password: "invalid" };
       const response = await request.post("/auth/login").send(invalidLogin);
-      console.log(response.body.message);
       expect(response.status).to.equal(401);
       expect(response.body.message).to.equal("Invalid credentials.");
     });

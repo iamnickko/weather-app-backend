@@ -3,14 +3,6 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.model.js";
 
 export default class AuthService {
-  //  signToken = (user) => {
-  //   return (accessToken = jwt.sign(
-  //     { id: user._id.toString() },
-  //     process.env.JWT_SECRET,
-  //     { expiresIn: 86400 }
-  //   ));
-  // };
-
   signUp = async (newUser) => {
     const { password, ...others } = newUser;
     try {

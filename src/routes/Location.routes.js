@@ -15,13 +15,15 @@ export default class LocationRoutes {
   }
 
   #initialise = () => {
-    this.#router.get("/", (req, res) => {
-      res.status(200).json({ message: "This will be the homepage" });
-    });
     this.#router.put(
       "/savedLocations",
       [AuthMiddleware.authoriseRequest],
       this.#controller.addLocation
+    );
+    this.#router.put(
+      "/removeLocation",
+      [AuthMiddleware.authoriseRequest],
+      this.#controller.removeLocation
     );
   };
 

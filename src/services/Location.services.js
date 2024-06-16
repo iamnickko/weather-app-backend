@@ -1,9 +1,9 @@
 import User from "../models/User.model.js";
 
 export default class LocationServices {
-  addLocation = async ({ email, name, apiId, coord }) => {
+  addLocation = async ({ email, name, id, coord }) => {
     try {
-      if (!email || !name || !apiId || !coord) {
+      if (!email || !name || !id || !coord) {
         throw new Error("Invalid parameters.");
       }
       const dbUser = await User.findOne({ email });
@@ -11,11 +11,11 @@ export default class LocationServices {
       const existingLocations = dbUser.savedLocations;
 
       const locationAlreadySaved = existingLocations.some(
-        (location) => location.apiId === apiId
+        (location) => location.id === id
       );
 
       if (!locationAlreadySaved) {
-        const locationToAdd = { name, apiId, coord };
+        const locationToAdd = { name, id, coord };
         const updateLocations = [...existingLocations, locationToAdd];
         return await User.findOneAndUpdate(
           { email },
@@ -24,6 +24,37 @@ export default class LocationServices {
         );
       } else {
         throw new Error("Location is already saved!");
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  removeLocation = async ({ email, id, name, coord }) => {
+    try {
+      if (!email || !id || !name || !coord) {
+        throw new Error("Invalid parameters.");
+      }
+      const dbUser = await User.findOne({ email });
+      if (!dbUser) throw new Error("404: User doesn't exist.");
+      console.log(dbUser);
+      const existingLocations = dbUser.savedLocations;
+
+      const locationExists = existingLocations.some(
+        (location) => location.id === id
+      );
+
+      if (locationExists) {
+        const updatedLocations = existingLocations.filter(
+          (location) => location.id !== id
+        );
+        return await User.findOneAndUpdate(
+          { email },
+          { savedLocations: updatedLocations },
+          { new: true }
+        );
+      } else {
+        throw new Error("Location doesn't exist!");
       }
     } catch (error) {
       throw error;

@@ -59,12 +59,12 @@ content-type: application/json
 
 PUT http://localhost:3000/savedLocations
 content-type: application/json
-X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmUwYmU4Yzg4MDIzNDgyNTdkM2E2MCIsImlhdCI6MTcxODQ4ODIyMywiZXhwIjoxNzE4NTc0NjIzfQ.4WJtPgg6LzDGurxvaPeMLuPP7zxv50qmdB4eU_tC1b4
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmYwYzAxODJlZjc1ZGQ0MzgwMjA1MiIsImlhdCI6MTcxODU1MzYwNywiZXhwIjoxNzE4NjQwMDA3fQ.VPnszGIRBrYOv4O8nh435qaV8akLKEPcWX75rzG3Wdo
 
 {
     "email": "paper@scissors.com",
     "name" : "Dublin",
-    "apiId": 5344157,
+    "id": 5344157,
     "coord": {
         "lat": 37.7021,
         "lon": -121.9358

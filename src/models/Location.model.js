@@ -3,7 +3,7 @@ import { Schema } from "mongoose";
 const locationSchema = new Schema(
   {
     name: { type: String, required: true },
-    apiId: { type: Number, required: true },
+    id: { type: Number, required: true },
     coord: {
       lat: { type: Number, required: true },
       lon: { type: Number, required: true },
