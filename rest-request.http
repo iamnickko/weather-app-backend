@@ -59,12 +59,12 @@ content-type: application/json
 
 PUT http://localhost:3000/savedLocations
 content-type: application/json
-X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmYwYzAxODJlZjc1ZGQ0MzgwMjA1MiIsImlhdCI6MTcxODU1MzYwNywiZXhwIjoxNzE4NjQwMDA3fQ.VPnszGIRBrYOv4O8nh435qaV8akLKEPcWX75rzG3Wdo
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmYwYzAxODJlZjc1ZGQ0MzgwMjA1MiIsImlhdCI6MTcxODc0ODczMiwiZXhwIjoxNzE4ODM1MTMyfQ.iofF9Kg49cjlml6BE3gwyKk6BGgXhoJOpASawAa0Blc
 
 {
     "email": "paper@scissors.com",
-    "name" : "Dublin",
-    "id": 5344157,
+    "name" : "Tatooine",
+    "id": 534437,
     "coord": {
         "lat": 37.7021,
         "lon": -121.9358
@@ -75,10 +75,11 @@ X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmYwYzAxODJlZjc
 ###
 PUT http://localhost:3000/savedLocations
 content-type: application/json
+X-Access-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NzIwN2I1ODM1MzNlNzkyMGI4MjY1MCIsImlhdCI6MTcxODc0OTExOCwiZXhwIjoxNzE4ODM1NTE4fQ.BTFJ-QA15zI5sMJBb8Qugm41-N7E1kFZV5A_JsOC1A8
 
 {
     "email": "valid@email.com",
-    "apiId": 2643743,
+    "id": 2643743,
     "name": "London",
     "coord": {
       "lat": 51.5085,
@@ -93,7 +94,7 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-    "email": "nicholasedwardko@gmail.com",
+    "email": "nick@gmail.com",
     "password": "Password123!"
 }
 
@@ -105,7 +106,7 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmYwYjAwMmI1MmE
 
 
 {
-    "email": "nicholasedwardko@gmail.com",
+    "email": "nick@gmail.com",
     "id": 2643743
 }
 
@@ -115,6 +116,6 @@ content-type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmYwYjAwMmI1MmE4N2JkNGU0NzkwMCIsImlhdCI6MTcxODcyMzQwOCwiZXhwIjoxNzE4ODA5ODA4fQ.ZH8H0Fb5HhxxtOL7D9Hm0lQyPxiihEbwSuxiCkH6cJE
 
 {
-    "email": "nicholasedwardko@gmail.com",
+    "email": "nick@gmail.com",
     "newPassword": "Password456!"
 }

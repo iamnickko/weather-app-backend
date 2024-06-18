@@ -165,5 +165,17 @@ describe("Integration Tests:", () => {
       expect(response.status).to.equal(401);
       expect(response.body.message).to.equal("Invalid credentials.");
     });
+
+    it("should return a 401 status code if email does not exist in the database", async () => {
+      const nonExistentUserLogin = {
+        email: "nonexistent@example.com",
+        password: "Password456!",
+      };
+      const response = await request
+        .post("/auth/login")
+        .send(nonExistentUserLogin);
+      expect(response.status).to.equal(401);
+      expect(response.body.message).to.equal("Invalid credentials.");
+    });
   });
 });
