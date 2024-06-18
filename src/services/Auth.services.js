@@ -11,11 +11,6 @@ export default class AuthService {
         ...others,
         password: hashedPassword,
       });
-      const accessToken = jwt.sign(
-        { id: createdUser._id.toString() },
-        process.env.JWT_SECRET,
-        { expiresIn: 86400 }
-      );
       return { newUser: createdUser };
     } catch (error) {
       throw new Error(error);
@@ -44,5 +39,16 @@ export default class AuthService {
       email: dbUser.email,
       savedLocations: dbUser.savedLocations,
     };
+  };
+
+  changePassword = async ({ email, newPassword }) => {
+    const newHashedPassword = bcrypt.hashSync(newPassword, 10);
+    const dbUser = await User.findOneAndUpdate({
+      email,
+      password: newHashedPassword,
+      new: true,
+      upsert: false,
+    });
+    return dbUser;
   };
 }

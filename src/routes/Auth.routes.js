@@ -1,4 +1,5 @@
 import AuthController from "../controllers/Auth.controller.js";
+import AuthMiddleware from "../middleware/Auth.middleware.js";
 import { Router } from "express";
 import Validation from "../middleware/Validation.middleware.js";
 
@@ -21,6 +22,11 @@ export default class AuthRoutes {
       this.#controller.signUp
     );
     this.#router.post("/login", this.#controller.login);
+    this.#router.put(
+      "/changePassword",
+      [AuthMiddleware.authoriseRequest],
+      this.#controller.changePassword
+    );
   };
 
   getRouter = () => {

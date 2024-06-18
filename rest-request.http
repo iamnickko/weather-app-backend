@@ -108,3 +108,13 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmYwYjAwMmI1MmE
     "email": "nicholasedwardko@gmail.com",
     "id": 2643743
 }
+
+###
+PUT http://localhost:3000/auth/changepassword
+content-type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmYwYjAwMmI1MmE4N2JkNGU0NzkwMCIsImlhdCI6MTcxODcyMzQwOCwiZXhwIjoxNzE4ODA5ODA4fQ.ZH8H0Fb5HhxxtOL7D9Hm0lQyPxiihEbwSuxiCkH6cJE
+
+{
+    "email": "nicholasedwardko@gmail.com",
+    "newPassword": "Password456!"
+}
