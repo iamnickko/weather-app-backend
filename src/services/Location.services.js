@@ -30,14 +30,16 @@ export default class LocationServices {
     }
   };
 
-  removeLocation = async ({ email, id, name, coord }) => {
+  removeLocation = async ({ id, email }) => {
+    console.log(id);
+    console.log(email);
     try {
-      if (!email || !id || !name || !coord) {
+      if (!email || !id) {
         throw new Error("Invalid parameters.");
       }
       const dbUser = await User.findOne({ email });
       if (!dbUser) throw new Error("404: User doesn't exist.");
-      console.log(dbUser);
+
       const existingLocations = dbUser.savedLocations;
 
       const locationExists = existingLocations.some(

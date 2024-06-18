@@ -94,5 +94,17 @@ content-type: application/json
 
 {
     "email": "nicholasedwardko@gmail.com",
-    "password": "password123"
+    "password": "Password123!"
+}
+
+### 
+
+PUT http://localhost:3000/removeLocation
+content-type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmYwYjAwMmI1MmE4N2JkNGU0NzkwMCIsImlhdCI6MTcxODcyMzQwOCwiZXhwIjoxNzE4ODA5ODA4fQ.ZH8H0Fb5HhxxtOL7D9Hm0lQyPxiihEbwSuxiCkH6cJE
+
+
+{
+    "email": "nicholasedwardko@gmail.com",
+    "id": 2643743
 }
