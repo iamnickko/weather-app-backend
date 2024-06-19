@@ -31,8 +31,6 @@ export default class LocationServices {
   };
 
   removeLocation = async ({ id, email }) => {
-    console.log(id);
-    console.log(email);
     try {
       if (!email || !id) {
         throw new Error("Invalid parameters.");
